@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 class GalleryScreen extends GetView<GalleryController> {
   const GalleryScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Obx(()=>Scaffold(
