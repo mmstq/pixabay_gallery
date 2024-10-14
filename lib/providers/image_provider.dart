@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class GalleryProvider {
+  /// Below key should be saved in safe sandbox but this is just for testing
   static const String _pixaBayApiKey = '41757688-c4029d3e8f80c901f73c2849c';
 
   static const String _apiUrl =

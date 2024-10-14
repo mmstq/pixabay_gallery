@@ -8,5 +8,5 @@ class GalleryBinding extends Bindings{
     Get.put(GalleryProvider());
     Get.put(GalleryController());
   }
-  
+  /// Nothing to explain just injecting dependencies
 }
