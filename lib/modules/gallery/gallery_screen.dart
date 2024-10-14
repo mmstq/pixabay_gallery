@@ -41,14 +41,9 @@ class GalleryScreen extends GetView<GalleryController> {
                     return const Center(child: CupertinoActivityIndicator());
                   }
 
-                  return MasonryGridView.count(
+                  return GridView.builder(
                     controller: controller.scrollController,
-                    crossAxisCount: controller.columns.value-1,
-                    // Set your number of columns here
-                    mainAxisSpacing: 12,
-                    crossAxisSpacing: 12,
-                    itemCount: controller.items.length + 1,
-                    // Add 1 for the loading indicator
+                    itemCount: controller.items.length +1 ,
                     itemBuilder: (context, index) {
                       if (index == controller.items.length) {
                         // Loading indicator at the end of the list
@@ -61,18 +56,22 @@ class GalleryScreen extends GetView<GalleryController> {
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: CachedNetworkImage(
-                              imageUrl: imageItem['webformatURL'],
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) => const Icon(Icons.error),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CachedNetworkImage(
+                                imageUrl: imageItem['webformatURL'],
+                                fit: BoxFit.fill,
+                                height: 400,
+                                width: 400,
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                              ),
                             ),
                           ),
                           Positioned(
-                            right: 16,
+                            left: 16,
                             bottom: 16,
                             child: Row(
                               children: [
-                                /* ,,*/
                                 Container(
                                   height: 20,
                                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -127,7 +126,9 @@ class GalleryScreen extends GetView<GalleryController> {
                           )
                         ],
                       );
-                    },
+                    }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: controller.columns.value
+                  ),
                   );
                 },
               ),
